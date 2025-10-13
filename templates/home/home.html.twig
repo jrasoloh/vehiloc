@@ -1,4 +1,4 @@
-{# templates/home/index.html.twig #}
+{# templates/home/show.html.twig #}
 {% extends 'base.html.twig' %}
 
 {% block title %}Notre flotte de véhicules{% endblock %}
@@ -13,8 +13,7 @@
                 {% for car in cars %}
                     <article>
                         <div class="mini-car-title">
-                            {# Lien vers la page détail (à faire plus tard) #}
-                            <a href="#">
+                            <a href="{{ path('app_car_show', {'id': car.id}) }}">
                                 <h3>{{ car.name }}</h3>
                                 <p>ou similaire | Saint-Étienne</p>
                             </a>
@@ -37,13 +36,11 @@
                                 <p>Km illimités</p>
                             </div>
                             <div>
-                                {# Lien vers la page détail (à faire plus tard) #}
-                                <a href="#"><img src="{{ asset('assets/icons/plus.png') }}" alt="Plus" /></a>
+                                <a href="{{ path('app_car_show', {'id': car.id}) }}"><img src="{{ asset('assets/icons/plus.png') }}" alt="Plus" /></a>
                                 <p>Plus</p>
                             </div>
                         </div>
                         <div class="mini-car-price">
-                            {# number_format pour un affichage propre du prix #}
                             <p class="price-per-day">{{ car.dailyPrice|number_format(2, ',', ' ') }} € / jour</p>
                             <p class="price-per-month">{{ car.monthlyPrice|number_format(2, ',', ' ') }} € / mois</p>
                         </div>
