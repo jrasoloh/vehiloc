@@ -14,45 +14,14 @@
 </head>
 <body>
 
-<header>
-    <nav>
-        <a href="{{ path('app_home') }}"><img src="{{ asset('assets/img/logo.png') }}" alt="Vehicloc" /></a>
-        <a href="{{ path('app_car_add') }}" class="btn-nav">Ajouter une voiture</a> {# Lien à faire plus tard #}
-    </nav>
-    <div class="flex-header">
-        <div>
-            <h1>Location de voitures à Saint-Étienne</h1>
-            <p>Un service de location de voitures au mois pour répondre à vos besoins de mobilité.</p>
-        </div>
-        <div>
-            <img src="{{ asset('assets/img/car.png') }}" alt="Voiture">
-        </div>
-    </div>
-</header>
+{% include('header.html.twig') %}
 
 {# C'est ici que le contenu spécifique de chaque page sera inséré #}
 <main>
     {% block body %}{% endblock %}
 </main>
 
-<footer>
-    <h2>Conduire avec nous</h2>
-    <nav>
-        <ul>
-            <li><a href="#">Mentions légales</a></li>
-            <li><a href="#">Nous contacter</a></li>
-            <li>
-                <a href="#"><img src="{{ asset('assets/icons/instagram.png') }}" alt="Instagram" /></a>
-                <a href="#"><img src="{{ asset('assets/icons/facebook.png') }}" alt="Facebook" /></a>
-            </li>
-        </ul>
-        <ul>
-            <li><a href="#">Données personnelles</a></li>
-            <li><a href="#">Questions fréquentes</a></li>
-            <li class="copyright">© Véhicloc 2023</li>
-        </ul>
-    </nav>
-</footer>
+{% include('footer.html.twig') with {'current_year':'now'|date('Y')} %}
 
 </body>
 </html>

@@ -1,0 +1,16 @@
+{# templates/header.html.twig #}
+<header>
+    <nav>
+        <a href="{{ path('app_home') }}"><img src="{{ asset('assets/img/logo.png') }}" alt="Vehicloc" /></a>
+        <a href="{{ path('app_car_add') }}" class="btn-nav">Ajouter une voiture</a> {# Lien à faire plus tard #}
+    </nav>
+    <div class="flex-header">
+        <div>
+            <h1>Location de voitures à Saint-Étienne</h1>
+            <p>Un service de location de voitures au mois pour répondre à vos besoins de mobilité.</p>
+        </div>
+        <div>
+            <img src="{{ asset('assets/img/car.png') }}" alt="Voiture">
+        </div>
+    </div>
+</header>
