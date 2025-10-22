@@ -10,8 +10,34 @@ class AppFixtures extends Fixture
 {
     public function load(ObjectManager $manager): void
     {
-        $cars = [];
+        $this->loadCars($manager, $this->makeCars());
 
+        $manager->flush();
+    }
+
+    /**
+     * Creates a new Car instance with the given data.
+     */
+    private function makeCar(
+        string $name,
+        string $description,
+        float $dailyPrice,
+        float $monthlyPrice,
+        int $seatsNumber,
+        bool $manual
+    ): Car {
+        return (new Car())
+            ->setName($name)
+            ->setDescription($description)
+            ->setDailyPrice($dailyPrice)
+            ->setMonthlyPrice($monthlyPrice)
+            ->setSeatsNumber($seatsNumber)
+            ->setManual($manual);
+    }
+
+    private function makeCars(): array
+    {
+        $cars = [];
         $cars[] = $this->makeCar(
             name: 'Peugeot 208',
             description: 'Citadine agile et économique, parfaite pour la ville. Finition Allure avec écran tactile et aide au stationnement.',
@@ -84,29 +110,7 @@ class AppFixtures extends Fixture
             manual: false
         );
 
-        $this->loadCars($manager, $cars);
-
-        $manager->flush();
-    }
-
-    /**
-     * Creates a new Car instance with the given data.
-     */
-    private function makeCar(
-        string $name,
-        string $description,
-        float $dailyPrice,
-        float $monthlyPrice,
-        int $seatsNumber,
-        bool $manual
-    ): Car {
-        return (new Car())
-            ->setName($name)
-            ->setDescription($description)
-            ->setDailyPrice($dailyPrice)
-            ->setMonthlyPrice($monthlyPrice)
-            ->setSeatsNumber($seatsNumber)
-            ->setManual($manual);
+        return $cars;
     }
 
     /**
